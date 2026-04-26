@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nebraska Soccer Bracketology Board</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Nebraska High School Soccer</p>
+        <h1>Bracketology Workbench</h1>
+        <p class="subcopy">Shared boys and girls workbenches for regular season seeding, district projections, district game picking, and state-field scenarios.</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="exportBoardButton" type="button">Export Board</button>
+        <button id="exportDistrictButton" type="button" class="button-secondary">Export District Poster</button>
+        <button id="exportStateButton" type="button" class="button-secondary">Export State Poster</button>
+        <button id="resetAllButton" type="button" class="button-danger">Reset All Local Edits</button>
+      </div>
+    </header>
+
+    <section class="context-strip">
+      <div class="context-group">
+        <span class="context-label">Sport</span>
+        <div class="segmented" id="sportTabs">
+          <button type="button" data-sport="boys_soccer">Boys</button>
+          <button type="button" data-sport="girls_soccer">Girls</button>
+        </div>
+      </div>
+      <div class="context-group">
+        <span class="context-label">Class</span>
+        <div class="segmented" id="classTabs">
+          <button type="button" data-class="A">Class A</button>
+          <button type="button" data-class="B">Class B</button>
+        </div>
+      </div>
+      <div class="context-group">
+        <span class="context-label">Set</span>
+        <div class="segmented" id="setTabs">
+          <button type="button" data-set="regular_season">Regular Season</button>
+          <button type="button" data-set="districts">Districts</button>
+        </div>
+      </div>
+      <label class="context-input">
+        Cutoff
+        <input id="cutoffInput" type="date">
+      </label>
+    </section>
+
+    <section class="summary-strip">
+      <article class="summary-card">
+        <span class="summary-label">Projected Wildcard</span>
+        <strong class="summary-value" id="wildcardStat"></strong>
+      </article>
+      <article class="summary-card">
+        <span class="summary-label">Pending Games</span>
+        <strong class="summary-value" id="pendingGamesStat"></strong>
+      </article>
+      <article class="summary-card">
+        <span class="summary-label">Projected State Field</span>
+        <strong class="summary-value" id="bubbleStat"></strong>
+      </article>
+      <article class="summary-card">
+        <span class="summary-label">Notes</span>
+        <strong class="summary-value" id="noteStat"></strong>
+      </article>
+    </section>
+
+    <section class="view-nav">
+      <div class="segmented segmented--wide" id="viewTabs">
+        <button type="button" data-view="board">Board</button>
+        <button type="button" data-view="games">Game Center</button>
+        <button type="button" data-view="team">Team</button>
+        <button type="button" data-view="standings">Standings</button>
+        <button type="button" data-view="state">State</button>
+        <button type="button" data-view="oos">OOS</button>
+      </div>
+    </section>
+
+    <section id="boardView" class="view-panel"></section>
+    <section id="gamesView" class="view-panel is-hidden"></section>
+    <section id="teamView" class="view-panel is-hidden"></section>
+    <section id="standingsView" class="view-panel is-hidden"></section>
+    <section id="stateView" class="view-panel is-hidden"></section>
+    <section id="oosView" class="view-panel is-hidden"></section>
+  </main>
+
+  <script src="../data/current_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

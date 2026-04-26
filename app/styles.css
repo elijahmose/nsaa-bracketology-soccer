@@ -1,0 +1,739 @@
+:root {
+  --bg: #f5f1e8;
+  --ink: #141414;
+  --muted: #676154;
+  --line: #d9d1c0;
+  --panel: #fffdfa;
+  --panel-soft: #f2ede1;
+  --accent: #1f5a43;
+  --accent-soft: #e7f0eb;
+  --gold: #b17d18;
+  --gold-soft: #f7ead0;
+  --blue-soft: #e7edf7;
+  --blue-ink: #345388;
+  --danger-soft: #f7e1e1;
+  --danger-ink: #8b3c3c;
+  --shadow: 0 16px 30px rgba(20, 20, 20, 0.08);
+  font-family: Inter, "Avenir Next", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top right, rgba(177, 125, 24, 0.08), transparent 22%),
+    radial-gradient(circle at top left, rgba(31, 90, 67, 0.08), transparent 28%),
+    var(--bg);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  padding: 11px 14px;
+  font-weight: 700;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+  color: var(--ink);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+.app-shell {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 22px 18px 42px;
+}
+
+.topbar,
+.context-strip,
+.summary-strip,
+.board-grid,
+.board-summary-grid,
+.district-grid,
+.state-bracket,
+.team-grid,
+.segmented,
+.board-header,
+.table-metrics,
+.game-toolbar,
+.district-toolbar {
+  display: grid;
+  gap: 14px;
+}
+
+.topbar {
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.topbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-family: Georgia, "Iowan Old Style", serif;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 0.95;
+}
+
+.subcopy {
+  max-width: 780px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.context-strip {
+  grid-template-columns: repeat(3, minmax(220px, 1fr)) 180px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.context-group,
+.context-input,
+.summary-card,
+.board-wrap,
+.panel,
+.district-card,
+.game-card,
+.team-schedule-card,
+.oos-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.context-group,
+.context-input {
+  padding: 12px;
+}
+
+.context-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.context-input {
+  display: grid;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.segmented {
+  grid-auto-flow: column;
+  background: var(--panel-soft);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.segmented--wide {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.segmented button {
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 12px;
+}
+
+.segmented button.is-active {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 2px 10px rgba(20, 20, 20, 0.08);
+}
+
+.summary-strip {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 16px;
+}
+
+.summary-card {
+  padding: 16px;
+}
+
+.summary-label {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.summary-value {
+  display: block;
+  font-size: 1.14rem;
+  line-height: 1.2;
+}
+
+.view-nav {
+  margin-bottom: 16px;
+}
+
+.view-panel.is-hidden,
+.is-hidden {
+  display: none !important;
+}
+
+.board-wrap,
+.panel {
+  padding: 16px;
+}
+
+.board-header {
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.board-kicker {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.board-title {
+  font-family: Georgia, "Iowan Old Style", serif;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.board-meta,
+.panel-note,
+.muted,
+.tiny-note {
+  color: var(--muted);
+}
+
+.board-grid {
+  grid-template-columns: minmax(0, 1fr) 320px;
+  align-items: start;
+}
+
+.board-summary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 16px;
+}
+
+.district-grid {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.district-grid--bracket {
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+}
+
+.district-card {
+  overflow: hidden;
+}
+
+.district-head {
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 14px;
+}
+
+.district-code {
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.district-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.district-stage {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.district-body {
+  padding: 0;
+}
+
+.district-body--bracket {
+  display: grid;
+}
+
+.seed-block {
+  border-top: 1px solid var(--line);
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(31, 90, 67, 0.02), #fff);
+}
+
+.seed-block--accent {
+  background: #f1ede5;
+}
+
+.seed-line {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 8px;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.seed-number {
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.seed-team {
+  font-size: 0.97rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.seed-sub {
+  padding-left: 36px;
+  color: var(--muted);
+  font-size: 0.87rem;
+}
+
+.playin-note {
+  display: block;
+  margin-top: 6px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.district-round-heading {
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.district-round-empty {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.district-match-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid #ebe4d5;
+}
+
+.district-match-row:first-of-type {
+  border-top: 0;
+}
+
+.district-match-label {
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.district-match-time {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.district-match-teams {
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.district-structure {
+  border-top: 1px solid var(--line);
+  background: #fbf8f1;
+  padding: 12px 14px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.board-side,
+.mini-list,
+.pending-wrap,
+.standings-wrap,
+.state-wrap,
+.oos-wrap,
+.team-wrap,
+.team-form,
+.team-form-grid,
+.team-form-grid--three,
+.oos-grid,
+.oos-controls,
+.game-list,
+.state-column,
+.state-game-list {
+  display: grid;
+  gap: 12px;
+}
+
+.mini-row,
+.table-metrics .metric {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: baseline;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+}
+
+.panel h3 {
+  margin-bottom: 10px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.game-toolbar {
+  grid-template-columns: 1.3fr 1fr 1fr auto auto;
+  align-items: end;
+  margin-bottom: 14px;
+}
+
+.district-toolbar {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.game-card,
+.team-schedule-card,
+.state-game {
+  padding: 14px;
+}
+
+.game-top,
+.team-schedule-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.game-title {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.game-subtitle,
+.schedule-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pill-unplayed {
+  background: var(--gold-soft);
+  color: #83560b;
+}
+
+.pill-projected {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.pill-official {
+  background: var(--blue-soft);
+  color: var(--blue-ink);
+}
+
+.pill-draft {
+  background: #efe7fb;
+  color: #6a47a1;
+}
+
+.pill-cancelled {
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+}
+
+.game-controls,
+.game-controls--official,
+.team-actions,
+.panel-actions,
+.score-draft-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.game-controls {
+  align-items: end;
+  margin-top: 12px;
+}
+
+.game-controls label,
+.team-form label,
+.oos-controls label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.game-controls label {
+  min-width: 210px;
+}
+
+.game-controls--official label {
+  flex: 1 1 170px;
+}
+
+.button-secondary {
+  background: #e6ebe8;
+  color: var(--ink);
+}
+
+.button-danger {
+  background: #8b3c3c;
+  color: #fff;
+}
+
+.button-tertiary {
+  background: #efebe1;
+  color: var(--ink);
+}
+
+.team-grid {
+  grid-template-columns: 320px minmax(0, 1fr);
+}
+
+.team-form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.team-form-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  padding: 11px 10px;
+  border-bottom: 1px solid #ece5d7;
+  text-align: left;
+}
+
+th {
+  background: #f4efe4;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.state-wrap {
+  grid-template-columns: 340px minmax(0, 1fr);
+}
+
+.state-bracket {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.state-column h4 {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.state-game-list--semis {
+  padding-top: 120px;
+}
+
+.state-game-list--final {
+  padding-top: 240px;
+}
+
+.state-game {
+  min-height: 170px;
+  border: 2px solid var(--line);
+}
+
+.state-game-label {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.state-game-time {
+  margin: 8px 0 12px;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.state-team-line {
+  margin-bottom: 6px;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.state-site {
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.oos-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.oos-card {
+  padding: 14px;
+}
+
+.oos-controls {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: end;
+}
+
+.empty-state {
+  padding: 18px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 1180px) {
+  .context-strip,
+  .summary-strip,
+  .board-grid,
+  .board-summary-grid,
+  .team-grid,
+  .state-wrap,
+  .game-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .segmented--wide {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .topbar {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar-actions {
+    justify-content: flex-start;
+  }
+
+  .summary-strip,
+  .state-bracket,
+  .team-form-grid,
+  .team-form-grid--three,
+  .oos-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .segmented {
+    grid-auto-flow: row;
+  }
+
+  .segmented--wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
